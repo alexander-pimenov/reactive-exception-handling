@@ -1,6 +1,6 @@
-package com.javatechie.reactive.route;
+package com.javatechie.reactive.functionalapproach.route;
 
-import com.javatechie.reactive.handler.BookHandler;
+import com.javatechie.reactive.functionalapproach.handler.BookHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.annotation.Bean;
@@ -15,17 +15,17 @@ public class AppRouterConfig {
     @Autowired
     private BookHandler bookHandler;
 
+    /*бин для работы с обработчиком ошибок функционального подхода*/
     @Bean
     public WebProperties.Resources resources(){
         return new WebProperties.Resources();
     }
 
-
     @Bean
     public RouterFunction<ServerResponse> routerFunction(){
         return RouterFunctions.route()
                 .GET("/route/books", bookHandler::getBooks)
-                .GET("/route/book/{bookId}",bookHandler::getBookById)
+                .GET("/route/books/{bookId}",bookHandler::getBookById)
                 .build();
     }
 }

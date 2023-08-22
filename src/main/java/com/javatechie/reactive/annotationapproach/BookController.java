@@ -1,4 +1,4 @@
-package com.javatechie.reactive.handler;
+package com.javatechie.reactive.annotationapproach;
 
 import com.javatechie.reactive.dao.BookRepository;
 import com.javatechie.reactive.dto.Book;
@@ -30,6 +30,4 @@ public class BookController {
                 .next()
                 .switchIfEmpty(Mono.error(new BookAPIException("Book not found with id " + id)));
     }
-
-
 }
